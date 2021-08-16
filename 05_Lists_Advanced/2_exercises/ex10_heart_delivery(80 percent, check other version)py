@@ -1,0 +1,26 @@
+addresses = [int(x) for x in input().split("@")]
+command = input()
+visiting = 0
+
+while command != "Love!":
+    visiting += int(command[4:])
+    # print(visiting)
+    if visiting >= len(addresses) or visiting < 0:  # checks valid index
+        visiting = 0
+
+    if addresses[visiting] > 0:  # checks if already 0
+        addresses[visiting] -= 2
+        if addresses[visiting] == 0:
+            print(f"Place {visiting} has Valentine's day.")
+    else:
+        print(f"Place {visiting} already had Valentine's day.")
+
+    command = input()
+
+print(f"Cupid's last position was {visiting}.")
+not_visited = len(addresses) - addresses.count(0)
+if not_visited == 0:
+    print("Mission was successful")
+
+else:
+    print(f"Cupid has failed {not_visited} places.")
